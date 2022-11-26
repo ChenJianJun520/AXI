@@ -1,6 +1,9 @@
+`ifndef AXI_LITE_IF_SV
+`define AXI_LITE_IF_SV
+
 import axi_lite_pkg::*;
 
-interface axi_lite_if;
+interface axi_lite_if(input aclk,resetn);
 
     //  Read Address Channel
     addr_t araddr;
@@ -30,6 +33,7 @@ interface axi_lite_if;
     logic bready;
 
     modport master (
+        input aclk,resetn,
         output araddr, arvalid, input arready,
         output rready, input rdata, rresp, rvalid,
         output awaddr, awvalid, input awready,
@@ -38,6 +42,7 @@ interface axi_lite_if;
     );
 
     modport slave (
+        input aclk,resetn,
         input araddr, arvalid, output arready,
         input rready, output rdata, rresp, rvalid,
         input awaddr, awvalid, output awready,
@@ -46,4 +51,7 @@ interface axi_lite_if;
     );
 
 endinterface
+
+
+`endif
 

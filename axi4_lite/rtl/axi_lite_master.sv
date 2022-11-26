@@ -1,5 +1,3 @@
-import axi_lite_pkg::*;
-
 module  axi_lite_master(
     input clk,
     input rst,
